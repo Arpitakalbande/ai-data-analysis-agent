@@ -276,7 +276,7 @@ export default function AnalysisWorkspace() {
         return;
       }
     } catch (error) {
-      // If charts not ready, fall through to trigger generation
+     
     }
 
     setActiveAgents((prev) => Array.from(new Set([...prev, 'Visualization Agent'])));

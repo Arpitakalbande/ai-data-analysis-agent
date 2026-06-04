@@ -31,8 +31,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
-        case_sensitive = False  # Allow lowercase env vars
-
+        case_sensitive = False  
 
 settings = Settings()
 

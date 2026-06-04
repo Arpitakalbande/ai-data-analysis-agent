@@ -18,7 +18,7 @@ def create_charts(request: ChartRequest):
         raise HTTPException(status_code=404, detail="Analysis not found")
 
     try:
-        # Call the task directly (eager execution with memory backend)
+        
         result = generate_charts(request.analysis_id)
         print(f"Charts generated: {len(result) if isinstance(result, list) else 'unknown'}")
     except Exception as e:

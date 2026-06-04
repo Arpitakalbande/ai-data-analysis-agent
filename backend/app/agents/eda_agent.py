@@ -56,7 +56,7 @@ def run_eda(self, analysis_id: str):
     preprocessing_info = {
         "original_rows": original_rows,
         "original_total_missing_cells": int(original_missing),
-        "duplicates_found": int(original_duplicates),
+        "duplicates_found": int(original_duplicates), 
         "duplicates_removed": int(duplicates_removed),
         "rows_with_missing_removed": int(missing_rows_removed),
         "cleaned_rows": len(df),

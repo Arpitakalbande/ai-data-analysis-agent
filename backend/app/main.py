@@ -6,7 +6,7 @@ from app.core.database import init_db
 
 app = FastAPI(title="DataViz AI API", version="1.0.0")
 
-# Initialize database on startup
+
 init_db()
 
 app.add_middleware(

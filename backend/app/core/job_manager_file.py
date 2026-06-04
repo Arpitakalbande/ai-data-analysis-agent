@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import date, datetime
 from pathlib import Path
 from typing import Optional, Dict, Any
 
@@ -44,8 +45,22 @@ def _save_job(job_id: str, data: Dict[str, Any]):
     file_path = _get_job_file(job_id)
     temp_file_path = file_path.with_suffix(".json.tmp")
 
+    def _json_default(value):
+        if isinstance(value, (datetime, date)):
+            return value.isoformat()
+
+        try:
+            import numpy as np
+
+            if isinstance(value, np.generic):
+                return value.item()
+        except Exception:
+            pass
+
+        return str(value)
+
     with open(temp_file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, default=_json_default)
 
     os.replace(temp_file_path, file_path)
 
