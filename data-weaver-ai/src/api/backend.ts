@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const backend = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL ?? "http://127.0.0.1:8000",
+  baseURL: import.meta.env.VITE_BACKEND_URL ?? "https://data-analytics-agent-7w17.onrender.com/",
   headers: {
     "Content-Type": "application/json",
   },

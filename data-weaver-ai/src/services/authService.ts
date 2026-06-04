@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://data-analytics-agent-7w17.onrender.com';
 
 interface SignUpRequest {
   email: string;
