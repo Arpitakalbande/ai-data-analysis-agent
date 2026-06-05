@@ -6,7 +6,7 @@ app = FastAPI(title="Data Analysis Agent - Minimal API")
 # Keep CORS configuration conservative for dev; adjust in production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173","https://data-analytics-agent-psi.vercel.app/"],
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173","https://data-analytics-agent-psi.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
