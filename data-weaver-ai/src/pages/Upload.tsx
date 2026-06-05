@@ -13,7 +13,7 @@ import { uploadFile } from '@/api/upload';
 import { startAnalysis } from '@/api/analyze';
 import { getJobStatus } from '@/api/status';
 import { backend } from '@/api/backend';
-import { getUserId } from '@/lib/userSession';
+import { getUserId } from '@/lib/sessionUtils';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function UploadPage() {

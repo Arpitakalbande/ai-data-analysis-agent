@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Navbar } from '@/components/layout/Navbar';
 import { backend } from '@/api/backend';
-import { getUserId } from '@/lib/userSession';
+import { getUserId } from '@/lib/sessionUtils';
 import { useAuth } from '@/hooks/useAuth';
 
 interface Analysis {
