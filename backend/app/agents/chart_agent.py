@@ -1,4 +1,3 @@
-from celery import shared_task
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -32,8 +31,7 @@ RAINBOW_COLORS = [
 ]
 
 
-@shared_task(bind=True)
-def generate_charts(self, analysis_id: str):
+def generate_charts(analysis_id: str):
     from app.core.job_manager_file import (
         get_analysis,
         get_job_data,

@@ -1,4 +1,3 @@
-from celery import shared_task
 from anthropic import Anthropic
 from app.core.config import settings
 import json
@@ -48,8 +47,7 @@ This dataset contains {row_count} rows and {col_count} columns. The data include
     return insights
 
 
-@shared_task(bind=True)
-def generate_insights(self, analysis_id: str):
+def generate_insights(analysis_id: str):
     from app.core.job_manager_file import (
         get_analysis,
         update_analysis_status,

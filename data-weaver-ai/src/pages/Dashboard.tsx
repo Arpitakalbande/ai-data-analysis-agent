@@ -78,6 +78,17 @@ export default function DashboardPage() {
     });
   };
 
+  const dashboardPreview = dashboards.length > 0
+    ? dashboards
+    : analyses.slice(0, 5).map((analysis) => ({
+        id: analysis.id,
+        name: analysis.name,
+        description: analysis.description,
+        created_at: analysis.created_at,
+      }));
+
+  const dashboardCount = dashboardPreview.length;
+
   const stats = [
     {
       label: 'Total Analyses',
@@ -87,7 +98,7 @@ export default function DashboardPage() {
     },
     {
       label: 'Dashboards',
-      value: dashboards.length,
+      value: dashboardCount,
       icon: LayoutDashboard,
       gradient: 'from-secondary to-accent',
     },
@@ -215,7 +226,7 @@ export default function DashboardPage() {
                     <div key={i} className="h-16 bg-muted animate-pulse rounded-lg" />
                   ))}
                 </div>
-              ) : dashboards.length === 0 ? (
+              ) : dashboardPreview.length === 0 ? (
                 <div className="text-center py-8">
                   <LayoutDashboard className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
                   <p className="text-muted-foreground mb-4">No dashboards yet</p>
@@ -225,7 +236,7 @@ export default function DashboardPage() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {dashboards.map((dashboard) => (
+                  {dashboardPreview.map((dashboard) => (
                     <Link key={dashboard.id} to={`/dashboard/${dashboard.id}`}>
                       <div className="flex items-center justify-between p-4 rounded-lg border border-border/50 hover:border-primary/50 hover:bg-muted/30 transition-all">
                         <div className="flex items-center gap-4">

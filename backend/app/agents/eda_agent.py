@@ -1,10 +1,8 @@
-from celery import shared_task
 import pandas as pd
 import numpy as np
 
 
-@shared_task(bind=True)
-def run_eda(self, analysis_id: str):
+def run_eda(analysis_id: str):
     from app.core.job_manager_file import (
         get_analysis,
         get_job_data,

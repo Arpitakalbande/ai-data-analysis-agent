@@ -13,6 +13,7 @@ import Dashboard from '@/pages/Dashboard';
 import Analyses from '@/pages/Analyses';
 import Upload from '@/pages/Upload';
 import AnalysisWorkspace from '@/pages/AnalysisWorkspace';
+import DashboardDetail from '@/pages/DashboardDetail';
 import Profile from '@/pages/Profile';
 import NotFound from '@/pages/NotFound';
 
@@ -63,6 +64,7 @@ function AppRoutes() {
       <Route path="/analyses" element={<Analyses />} />
       <Route path="/upload" element={<Upload />} />
       <Route path="/analysis/:id" element={<AnalysisWorkspace />} />
+      <Route path="/dashboard/:id" element={<DashboardDetail />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

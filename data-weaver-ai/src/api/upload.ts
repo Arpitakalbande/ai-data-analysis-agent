@@ -10,11 +10,7 @@ export async function uploadFile(file: File): Promise<UploadResponse> {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await backend.post("/upload", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const res = await backend.post("/upload", formData);
 
-  return res.data;
+  return res.data as UploadResponse;
 }

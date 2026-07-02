@@ -27,6 +27,13 @@ app.include_router(export.router, prefix="/export", tags=["Export"])
 app.include_router(connect.router, prefix="/connect-db", tags=["Database"])
 app.include_router(status.router, prefix="/status", tags=["Status"])
 
+@app.get("/")
+def read_root():
+    return {
+        "status": "healthy",
+        "message": "DataViz AI API is running. Use /health for health checks and /docs for API docs.",
+    }
+
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}

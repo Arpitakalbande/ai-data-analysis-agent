@@ -84,8 +84,8 @@ export default function UploadPage() {
     setUploadProgress(0);
 
     const progressInterval = setInterval(() => {
-      setUploadProgress((prev) => Math.min(prev + 5, 90));
-    }, 300);
+      setUploadProgress((prev) => Math.min(prev + 8, 90));
+    }, 180);
 
     try {
       // Step 1: upload file to backend
@@ -95,7 +95,7 @@ export default function UploadPage() {
       // Step 2: poll job status until file is parsed
       let attempts = 0;
       let jobDone = false;
-      while (attempts < 120 && !jobDone) { // up to ~60s
+      while (attempts < 60 && !jobDone) { // up to ~30s
         const status = await getJobStatus(jobId);
         setUploadProgress(status.progress);
 
@@ -107,7 +107,7 @@ export default function UploadPage() {
           throw new Error('File processing failed');
         }
 
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 250));
         attempts += 1;
       }
 
@@ -135,9 +135,12 @@ export default function UploadPage() {
       });
     } catch (error) {
       clearInterval(progressInterval);
+      const message = error instanceof Error ? error.message : 'An error occurred';
       toast({
         title: 'Upload failed',
-        description: error instanceof Error ? error.message : 'An error occurred',
+        description: message.includes('Network Error') || message.includes('status 500') || message.includes('status 404')
+          ? `The upload request failed. Backend response: ${message}`
+          : message,
         variant: 'destructive',
       });
     } finally {
